@@ -30,6 +30,14 @@ export default {
       var imageCanvas = canvasElem2.getContext('2d');
       imageCanvas.fillStyle = 'black';
       imageCanvas.strokeStyle = 'black';
+      canvasElem2.addEventListener('touchstart', function(e) {
+        var touches = e.changedTouches;
+        var x, y;
+        x = touches[0].clientX * step.x;
+        y = touches[0].clientY * step.y;
+        imageCanvas.moveTo(x, y)
+      })
+
       canvasElem2.addEventListener('touchmove', function(e) {
         var touches = e.changedTouches;
 
