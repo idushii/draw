@@ -1,8 +1,5 @@
 <template>
   <div id="app" class="row">
-    <div class="col s12">
-      <Navig />
-    </div>
     <router-view id="page-view"></router-view>
   </div>
 </template>

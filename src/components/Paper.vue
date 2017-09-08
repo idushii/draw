@@ -15,32 +15,32 @@ export default {
     var canvasElem2 = document.getElementById('imageCanvas');
     if (canvasElem2) {
 
-      let paddTop = navigation_bar.offsetHeight + 30;
+      //let paddTop = navigation_bar.offsetHeight + 30;
 
       let width = window.innerWidth;
-      let height = window.innerHeight - paddTop;
+      let height = window.innerHeight - 5;
 
       let widthCanvas = 500;
       let heightCanvas = 500;
 
-      let step = { x: widthCanvas/width, y: heightCanvas/height }
+      let step = { x: widthCanvas / width, y: heightCanvas / height }
 
       canvasElem2.style.height = height + 'px'
 
       var imageCanvas = canvasElem2.getContext('2d');
       imageCanvas.fillStyle = 'black';
       imageCanvas.strokeStyle = 'black';
-      canvasElem2.addEventListener('mousemove', function(e) {
-        var x, y;
-        x = e.pageX * step.x;
-        y = e.pageY * step.y - 64;
-        setTimeout(function() {
-          //imageCanvas.lineTo(x - canvasElem2.offsetLeft, y - canvasElem2.offsetTop);
-          //imageCanvas.moveTo(x - canvasElem2.offsetLeft, y - canvasElem2.offsetTop);
+      canvasElem2.addEventListener('touchmove', function(e) {
+        var touches = e.changedTouches;
+
+        for (var i = 0; i < touches.length; i++) {
+          var x, y;
+          x = touches[i].clientX * step.x;
+          y = touches[i].clientY * step.y - 0;
           imageCanvas.lineTo(x, y)
           imageCanvas.moveTo(x, y)
           imageCanvas.stroke();
-        }, 1)
+        }
       });
 
     }
